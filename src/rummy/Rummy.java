@@ -1,4 +1,4 @@
-package rummy;
+package rummy.src.rummy;
 
 public class Rummy {
 	private String[] allRanks = { "Ace", "1", "2", "3", "4", "5", "6", "7", "8",

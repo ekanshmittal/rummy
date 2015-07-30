@@ -1,5 +1,4 @@
-package rummy;
-
+package rummy.src.rummy;
 import java.util.List;
 
 public class Card {
