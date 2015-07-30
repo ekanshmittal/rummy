@@ -2,7 +2,7 @@ package rummy;
 
 public class Rummy {
 	private String[] allRanks = { "Ace", "1", "2", "3", "4", "5", "6", "7", "8",
-			"9", "10", "Joker", "Queen", "King" };
+			"9", "10", "Jack", "Queen", "King","Joker" };
 	private String[] allSuits = { "heart", "spade", "diamond", "club" };
 
 	public Rummy() {
