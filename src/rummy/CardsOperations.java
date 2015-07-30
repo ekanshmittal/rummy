@@ -23,12 +23,12 @@ public class CardsOperations {
 	}
 
 	public boolean isQuad(List<Card> cards) {
-		return true;
-	}
+		return areSuitsDifferent(cards) && isRankSame(cards)
+				&& cards.size() == 4;	}
 
 	public boolean isSequenceOfFive(List<Card> cards) {
-		return true;
-	}
+		return areSuitsDifferent(cards) && isRankSame(cards)
+				&& cards.size() == 5;	}
 
 	private boolean isRankSame(List<Card> cards) {
 		boolean isRankSame = true;
