@@ -13,11 +13,12 @@ public class Hand {
 	}
 
 	public boolean isSequence(ArrayList<Card> cards) {
+		// TO DO check for joker in sequence
+
 		return areRanksInSequence(cards) && areSuitsSame(cards);
 	}
 
 	public boolean isNaturalSequence(ArrayList<Card> cards) {
-		// TO DO add for isSequence and No joker
 		return (areRanksSame(cards) && areSuitsSame(cards) && cards.size() == 3)
 				|| (isSequence(cards) && !doesCardsContainJoker(cards));
 	}
@@ -121,6 +122,11 @@ public class Hand {
 	}
 
 	private boolean doesCardsContainJoker(ArrayList<Card> cards) {
+		for (Card card : cards) {
+			if (card.getRank() > 13) {
+				return true;
+			}
+		}
 		return false;
 	}
 }
