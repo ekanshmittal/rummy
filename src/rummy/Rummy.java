@@ -31,7 +31,7 @@ public class Rummy {
         hand.add(card);
 	}
 
-	private int generateRandomNumber(int maximum) {
+	public int generateRandomNumber(int maximum) {
 		return 0 + (int) (Math.random() * maximum);
 	}
 
