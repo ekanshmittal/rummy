@@ -20,17 +20,17 @@ public class Hand {
 	}
 
 	public boolean isTriplet(ArrayList<Card> cards) {
-		return areSuitsDifferent(cards) && isRankSame(cards)
+		return areSuitsDifferent(cards) && areRanksSame(cards)
 				&& cards.size() == 3;
 	}
 
 	public boolean isQuad(ArrayList<Card> cards) {
-		return areSuitsDifferent(cards) && isRankSame(cards)
+		return areSuitsDifferent(cards) && areRanksSame(cards)
 				&& cards.size() == 4;
 	}
 
 	public boolean isSequenceOfFive(ArrayList<Card> cards) {
-		return areSuitsDifferent(cards) && isRankSame(cards)
+		return areSuitsDifferent(cards) && areRanksSame(cards)
 				&& cards.size() == 5;
 	}
 
@@ -44,7 +44,7 @@ public class Hand {
 		}
 	}
 
-	private boolean isRankSame(ArrayList<Card> cards) {
+	private boolean areRanksSame(ArrayList<Card> cards) {
 		boolean isRankSame = true;
 		Set<Integer> ranks = new HashSet<Integer>();
 
@@ -58,6 +58,37 @@ public class Hand {
 
 		}
 		return isRankSame;
+	}
+
+	private boolean areRanksDifferent(ArrayList<Card> cards) {
+		boolean areRanksDifferent = true;
+		Set<Integer> ranks = new HashSet<Integer>();
+
+		for (Card card : cards) {
+			if (ranks.isEmpty()) {
+				ranks.add(card.getRank());
+			} else if (ranks.contains(card.getRank())) {
+				areRanksDifferent = false;
+				break;
+			}
+		}
+		return areRanksDifferent;
+	}
+
+	private boolean areSuitsSame(ArrayList<Card> cards) {
+		boolean isSuitSame = true;
+		Set<String> suits = new HashSet<String>();
+
+		for (Card card : cards) {
+			if (suits.isEmpty()) {
+				suits.add(card.getSuit());
+			} else if (!suits.contains(card.getSuit())) {
+				isSuitSame = false;
+				break;
+			}
+
+		}
+		return isSuitSame;
 	}
 
 	private boolean areSuitsDifferent(ArrayList<Card> cards) {
