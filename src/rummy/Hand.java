@@ -1,6 +1,7 @@
 package rummy;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,7 +13,7 @@ public class Hand {
 	}
 
 	public boolean isSequence(ArrayList<Card> cards) {
-		return true;
+		return areRanksInSequence(cards) && areSuitsSame(cards);
 	}
 
 	public boolean isNaturalSequence(ArrayList<Card> cards) {
@@ -30,8 +31,7 @@ public class Hand {
 	}
 
 	public boolean isSequenceOfFive(ArrayList<Card> cards) {
-		return areSuitsDifferent(cards) && areRanksSame(cards)
-				&& cards.size() == 5;
+		return isSequence(cards) && cards.size() == 5;
 	}
 
 	public ArrayList<Card> getCards() {
@@ -42,6 +42,18 @@ public class Hand {
 		for (Card card : cards) {
 			System.out.print(card.toString() + " ");
 		}
+	}
+
+	private boolean areRanksInSequence(ArrayList<Card> cards) {
+		Collections.sort(cards);
+		int previousRank = -1;
+		for (Card card : cards) {
+			if (previousRank != -1 && card.getRank() - previousRank != 1) {
+				return false;
+			}
+			previousRank = card.getRank();
+		}
+		return true;
 	}
 
 	private boolean areRanksSame(ArrayList<Card> cards) {
