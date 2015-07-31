@@ -13,8 +13,6 @@ public class Hand {
 	}
 
 	public boolean isSequence(ArrayList<Card> cards) {
-		// TO DO check for joker in sequence
-
 		return areRanksInSequence(cards) && areSuitsSame(cards);
 	}
 
@@ -49,12 +47,16 @@ public class Hand {
 
 	private boolean areRanksInSequence(ArrayList<Card> cards) {
 		Collections.sort(cards);
+		int numOfJokers = findNumberOfJokers(cards);
 		int previousRank = -1;
 		for (Card card : cards) {
 			if (previousRank != -1 && card.getRank() - previousRank != 1) {
-				return false;
+				numOfJokers -= card.getRank() - previousRank;
 			}
 			previousRank = card.getRank();
+		}
+		if (numOfJokers < 0) {
+			return false;
 		}
 		return true;
 	}
@@ -128,5 +130,15 @@ public class Hand {
 			}
 		}
 		return false;
+	}
+
+	private Integer findNumberOfJokers(ArrayList<Card> cards) {
+		int numOfJokers = 0;
+		for (Card card : cards) {
+			if (card.getRank() > 13) {
+				numOfJokers += 1;
+			}
+		}
+		return numOfJokers;
 	}
 }
