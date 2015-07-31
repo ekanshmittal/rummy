@@ -1,4 +1,4 @@
-package rummy.src.rummy;
+package rummy;
 import java.util.List;
 
 public class Card implements Comparable<Card>{
