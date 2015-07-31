@@ -49,10 +49,15 @@ public class Rummy {
 
     private int findMinimumCards() {
         sortHandbyRank();
+        findPreExistingSequences();
         for (int diff : subtract())
             System.out.println(diff);
 
         return 0;
+    }
+
+    private void findPreExistingSequences(){
+
     }
 
 	public static void main(String[] args) {
