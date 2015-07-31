@@ -12,6 +12,7 @@ public class Hand {
 	}
 
     public boolean canBeSequence(){
+    	//implemented
         return true;
     }
 
