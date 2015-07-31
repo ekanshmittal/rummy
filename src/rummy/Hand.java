@@ -17,7 +17,8 @@ public class Hand {
 	}
 
 	public boolean isNaturalSequence(ArrayList<Card> cards) {
-		return true;
+		//TO DO add for isSequence and No joker
+		return areRanksSame(cards) && areSuitsSame(cards) && cards.size() == 3;
 	}
 
 	public boolean isTriplet(ArrayList<Card> cards) {
